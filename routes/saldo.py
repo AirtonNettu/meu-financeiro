@@ -1,4 +1,6 @@
 from fastapi import APIRouter
+from database.conexao import calcular_saldo
+
 
 roteador = APIRouter(prefix="/saldo", tags=["Saldo"])
 
@@ -6,4 +8,5 @@ roteador = APIRouter(prefix="/saldo", tags=["Saldo"])
 
 @roteador.get("/")
 def consultar_saldo():
-    return {"saldo": 0}
+    saldo = calcular_saldo()
+    return {"saldo": saldo}
